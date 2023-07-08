@@ -4,12 +4,12 @@
 from ...models import PassiveLightCone
 
 
-def RefractionSightline(PassiveLightCone):
-	"""The class for the Light Cone passive ability "Refraction of Sightline".
+class RefractionSightline(PassiveLightCone):
+    """The class for the Light Cone passive ability "Refraction of Sightline".
 
-	Extends:
-		PassiveLightCone
-	"""
+    Extends:
+        PassiveLightCone
+    """
 
     @property
     def name(self) -> str:

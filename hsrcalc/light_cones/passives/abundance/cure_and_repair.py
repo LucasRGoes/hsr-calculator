@@ -4,12 +4,12 @@
 from ...models import PassiveLightCone
 
 
-def CureAndRepair(PassiveLightCone):
-	"""The class for the Light Cone passive ability "Cure and Repair".
+class CureAndRepair(PassiveLightCone):
+    """The class for the Light Cone passive ability "Cure and Repair".
 
-	Extends:
-		PassiveLightCone
-	"""
+    Extends:
+        PassiveLightCone
+    """
 
     @property
     def name(self) -> str:

@@ -4,12 +4,12 @@
 from ...models import PassiveLightCone
 
 
-def EnjoyWithRapture(PassiveLightCone):
-	"""The class for the Light Cone passive ability "Enjoy With Rapture".
+class EnjoyWithRapture(PassiveLightCone):
+    """The class for the Light Cone passive ability "Enjoy With Rapture".
 
-	Extends:
-		PassiveLightCone
-	"""
+    Extends:
+        PassiveLightCone
+    """
 
     @property
     def name(self) -> str:

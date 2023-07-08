@@ -2,4 +2,4 @@
 """
 
 from .passives import *
-from .models import BaseLightCone
+from .models import BaseLightCone, LightCone

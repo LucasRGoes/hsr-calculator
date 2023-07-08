@@ -5,13 +5,13 @@ logic.
 from ...models import PassiveLightCone
 
 
-def MornNoonDuskAndNight(PassiveLightCone):
-	"""The class for the Light Cone passive ability "Morn, Noon, Dusk and
+class MornNoonDuskAndNight(PassiveLightCone):
+    """The class for the Light Cone passive ability "Morn, Noon, Dusk and
     Night".
 
-	Extends:
-		PassiveLightCone
-	"""
+    Extends:
+        PassiveLightCone
+    """
 
     @property
     def name(self) -> str:

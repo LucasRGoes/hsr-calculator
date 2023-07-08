@@ -105,8 +105,7 @@ class BaseLightCone(object):
         hit_points: float,
         attack: float,
         defense: float,
-        passive_name: str,
-        passive_description: str,
+        passive: PassiveLightCone,
         simulated_universe: bool
     ):
         """BaseLightCone constructor.
@@ -119,9 +118,7 @@ class BaseLightCone(object):
             hit_points {float} -- the Light Cone's Hit Points or HP for short
             attack {float} -- the Light Cone's Attack or ATK for short
             defense {float} -- the Light Cone's Defense, or DEF for short
-            passive_name {str} -- the Light Cone's passive ability's name
-            passive_description {str} -- the Light Cone's passive ability
-            description
+            passive {PassiveLightCone} -- the Light Cone's passive ability
             simulated_universe {bool} -- if the Light Cone is obtained through
             the Simulated Universe's shop
         """
@@ -132,8 +129,7 @@ class BaseLightCone(object):
         self._hit_points = hit_points
         self._attack = attack
         self._defense = defense
-        self._passive_name = passive_name
-        self._passive_description = passive_description
+        self._passive = passive
         self._simulated_universe = simulated_universe
 
     def __eq__(self, other: 'BaseLightCone') -> bool:
@@ -153,8 +149,7 @@ class BaseLightCone(object):
                 and self.hit_points == other.hit_points \
                 and self.attack == other.attack \
                 and self.defense == other.defense \
-                and self.passive_name == other.passive_name \
-                and self.passive_description == other.passive_description \
+                and self.passive == other.passive \
                 and self.simulated_universe == other.simulated_universe
 
         else:
@@ -174,8 +169,7 @@ class BaseLightCone(object):
             self.hit_points,
             self.attack,
             self.defense,
-            self.passive_name,
-            self.passive_description,
+            self.passive,
             self.simulated_universe
         ))
 
@@ -240,13 +234,137 @@ class BaseLightCone(object):
         return self._defense
 
     @property
-    def passive_name(self) -> str:
-        return self._passive_name
-
-    @property
-    def passive_description(self) -> str:
-        return self._passive_description
+    def passive(self) -> PassiveLightCone:
+        return self._passive
 
     @property
     def simulated_universe(self) -> bool:
         return self._simulated_universe
+
+
+class LightCone(object):
+    """The LightCone class holds stats and other information regarding
+    HSR's built light cones.
+    """
+
+    def __init__(
+        self,
+        base_light_cone: BaseLightCone,
+        current_level: int,
+        ceiling_level: int,
+        superimposition: int
+    ):
+        """LightCone constructor.
+
+        Arguments:
+            base_light_cone {BaseLightCone} -- the base of this built Light
+            Cone
+            current_level {int} -- the built Light Cone's current level
+            ceiling_level {int} -- the built Light Cone's ceiling level
+            superimposition {int} -- the built Light Cone's superimposition
+            level
+        """
+        self._base_light_cone = base_light_cone
+        self._current_level = current_level
+        self._ceiling_level = ceiling_level
+        self._superimposition = superimposition
+
+    def __eq__(self, other: 'LightCone') -> bool:
+        """Equality operator's magic method.
+
+        Arguments:
+            other {LightCone} -- built Light Cone to be compared
+
+        Returns:
+            bool -- if the built Light Cones are equal or not
+        """
+        if type(other) == LightCone:
+            return self.base_light_cone == other.base_light_cone \
+                and self.current_level == other.current_level \
+                and self.ceiling_level == other.ceiling_level \
+                and self.superimposition == other.superimposition
+
+        else:
+            return False
+
+    def __hash__(self) -> int:
+        """Hash operator's magic method.
+
+        Returns:
+            int -- the hash value of the built Light Cone
+        """
+        return hash((
+            self.base_light_cone,
+            self.current_level,
+            self.ceiling_level,
+            self.superimposition
+        ))
+
+    def __str__(self) -> str:
+        """String operator's magic method.
+
+        Returns:
+            str -- string representation of the built Light Cone
+        """
+        return (f'{self.base_light_cone}: Lvl. '
+                f'{self.current_level}/{self.ceiling_level} '
+                f'(Superimposition {self.superimposition_as_str})')
+
+    @property
+    def base_light_cone(self) -> BaseLightCone:
+        return self._base_light_cone
+
+    @property
+    def current_level(self) -> int:
+        return self._current_level
+
+    @property
+    def ceiling_level(self) -> int:
+        return self._ceiling_level
+
+    @property
+    def superimposition(self) -> int:
+        return self._superimposition
+
+    @property
+    def superimposition_as_str(self) -> str:
+        if self.superimposition == 1:
+            return 'I'
+        elif self.superimposition == 2:
+            return 'II'
+        elif self.superimposition == 3:
+            return 'III'
+        elif self.superimposition == 4:
+            return 'IV'
+        elif self.superimposition == 5:
+            return 'V'
+
+    @property
+    def hit_points(self) -> float:
+        x = self.base_light_cone.hp / 4.8
+        y = self.base_light_cone.atk / 2.4
+        z = self.base_light_cone.def_ / 3
+
+        return x, y, z
+
+        if self.base_light_cone.rarity == 3:
+            pass
+
+        elif self.base_light_cone.rarity == 4:
+            pass
+
+        elif self.base_light_cone.rarity == 5 \
+                and self.base_light_cone.simulated_universe is False:
+            pass
+
+        elif self.base_light_cone.rarity == 5 \
+                and self.base_light_cone.simulated_universe is True:
+            pass
+
+    # @property
+    # def attack(self) -> float:
+    #     return self._attack
+
+    # @property
+    # def defense(self) -> float:
+    #     return self._defense

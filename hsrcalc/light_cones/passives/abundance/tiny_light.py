@@ -4,12 +4,12 @@
 from ...models import PassiveLightCone
 
 
-def TinyLight(PassiveLightCone):
-	"""The class for the Light Cone passive ability "Tiny Light".
+class TinyLight(PassiveLightCone):
+    """The class for the Light Cone passive ability "Tiny Light".
 
-	Extends:
-		PassiveLightCone
-	"""
+    Extends:
+        PassiveLightCone
+    """
 
     @property
     def name(self) -> str:
