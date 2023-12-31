@@ -3,7 +3,7 @@ methods concerning stats data of HSR's Enemies.
 """
 
 from enum import Enum
-from typing import NamedTuple
+from typing import List, NamedTuple
 
 from ..terminology import Element
 
@@ -106,7 +106,7 @@ class Enemy(object):
         name: str,
         tier: EnemyTier,
         damage_type: Element,
-        weaknesses: list[Element],
+        weaknesses: List[Element],
         toughness: int,
         hit_points: float,
         attack: float,
@@ -123,7 +123,7 @@ class Enemy(object):
             name {str} -- The enemy's name
             tier {EnemyTier} -- The enemy's tier
             damage_type {Element} -- The enemy's damage type
-            weaknesses {list[Element]} -- The enemy's list of elemental
+            weaknesses {List[Element]} -- The enemy's list of elemental
             weaknesses
             toughness {int} -- The enemy's toughness
             hit_points {float} -- The enemy's Hit Points (HP)
@@ -227,7 +227,7 @@ class Enemy(object):
         return self._damage_type.value
 
     @property
-    def weaknesses(self) -> list[Element]:
+    def weaknesses(self) -> List[Element]:
         return self._weaknesses
 
     @property

@@ -1,7 +1,8 @@
 """This module holds the Enemy model for Cloud Knights Patroller.
 """
 
-from ..models import EnemyTier, EnemyDamageResistences, EnemyDebuffResistences
+from ..models import EnemyTier, EnemyDamageResistences, \
+    EnemyDebuffResistences, Enemy
 from ...terminology import Element
 
 
