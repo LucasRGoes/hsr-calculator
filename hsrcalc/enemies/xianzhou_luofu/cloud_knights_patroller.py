@@ -1,17 +1,16 @@
 """This module holds the Enemy model for Cloud Knights Patroller.
 """
 
-from ..models import EnemyTier, EnemyDamageResistences, \
-    EnemyDebuffResistences, BaseEnemy
+from .. import models
 from ... import terminology
 
 
-class CloudKnightsPatrollerEnemy(BaseEnemy):
+class CloudKnightsPatrollerEnemy(models.BaseEnemy):
     """This class holds information regarding the Cloud Knights Patroller
     Enemy.
 
     Extends:
-        BaseEnemy
+        models.BaseEnemy
     """
 
     def __init__(self):
@@ -19,7 +18,7 @@ class CloudKnightsPatrollerEnemy(BaseEnemy):
         """
         super().__init__(
             name='Cloud Knights Patroller',
-            tier=EnemyTier.NORMAL,
+            tier=models.EnemyTier.NORMAL,
             damage_type=terminology.Element.WIND,
             weaknesses=[
                 terminology.Element.FIRE,
@@ -33,8 +32,8 @@ class CloudKnightsPatrollerEnemy(BaseEnemy):
             speed=144.0,
             effect_hit_rate=24.0,
             effect_res=20.0,
-            damage_res=EnemyDamageResistences(
+            damage_res=models.EnemyDamageResistences(
                 physical=20.0, ice=20.0, lightning=20.0, quantum=20.0
             ),
-            debuff_res=EnemyDebuffResistences()
+            debuff_res=models.EnemyDebuffResistences()
         )

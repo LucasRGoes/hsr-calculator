@@ -2,9 +2,47 @@
 and methods concerning calculations of HSR's characters.
 """
 
-from typing import NamedTuple
+from abc import ABC, abstractmethod
+from enum import Enum, auto
+from typing import Dict, List, NamedTuple
 
 from .. import terminology
+
+
+class AbilityType(Enum):
+    """Represents HSR's ability types.
+
+    Extends:
+        Enum
+    """
+    BASIC_ATK = auto()
+    SKILL = auto()
+    ULTIMATE = auto()
+    TALENT = auto()
+    TECHNIQUE = auto()
+
+
+class AbilityClass(Enum):
+    """Represents HSR's ability class.
+
+    Extends:
+        Enum
+    """
+    SINGLE_TARGET = auto()
+    BLAST = auto()
+    ENHANCE = auto()
+    AOE = auto()
+
+
+class AbilityEnhancement(Enum):
+    """Represents HSR's ability enhancement.
+
+    Extends:
+        Enum
+    """
+    TIER_I = auto()
+    TIER_II = auto()
+    TIER_III = auto()
 
 
 class CharacterStats(NamedTuple):
@@ -43,9 +81,42 @@ class CharacterStats(NamedTuple):
     damage_boost: float = 0.0
 
 
-class BaseCharacter:
+class CharacterAbility(NamedTuple):
+    """The CharacterAbility class describes a character's ability and how it
+    works.
+
+    Extends:
+        NamedTuple
+
+    Arguments:
+        name {str} -- The ability's name
+        type_ {AbilityType} -- The ability's typing
+        class_ {AbilityClass} -- The ability's class
+        damage_calculation {Dict[str, List[float]]} -- How the ability's effect
+        is calculated in terms of stat and percentage
+        damage_distribution {List[float]} -- How the ability's damage is
+        distributed, if it does damage
+        energy_generation {int} -- How much energy does the ability generate
+        toughness {List[int]} -- How much toughness does the ability damages
+        for each target
+        ends_turn {bool} -- If the ability ends a character's turn
+    """
+    name: str
+    type_: AbilityType
+    class_: AbilityClass
+    damage_calculation: Dict[str, List[float]]
+    damage_distribution: List[float]
+    energy_generation: int
+    toughness: List[int]
+    ends_turn: bool = True
+
+
+class BaseCharacter(ABC):
     """The BaseCharacter class holds stats and other information regarding
     HSR's characters.
+
+    Extends:
+        ABC
     """
 
     def __init__(
@@ -358,3 +429,17 @@ class BaseCharacter:
             CharacterStats -- the traces_stats parameter
         """
         return self._traces_stats
+
+    @abstractmethod
+    def basic_attack(
+        self, enhanced: AbilityEnhancement = AbilityEnhancement.TIER_I
+    ) -> CharacterAbility:
+        """The character's basic attack description should be returned.
+
+        Arguments:
+            enhanced {AbilityEnhancement} -- if the returned ability should be
+            the enhanced one or not
+
+        Returns:
+            CharacterAbility -- the description for the ability
+        """
