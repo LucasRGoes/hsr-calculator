@@ -1,8 +1,8 @@
-"""The terminology module holds information for pre-determined variables of
-HSR.
+"""The terminology module holds information of generic usage between HSR's
+aspects.
 """
 
-from enum import Enum
+from enum import Enum, auto
 
 
 class Element(Enum):
@@ -11,13 +11,13 @@ class Element(Enum):
     Extends:
         Enum
     """
-    FIRE = 1
-    ICE = 2
-    IMAGINARY = 3
-    LIGHTNING = 4
-    PHYSICAL = 5
-    QUANTUM = 6
-    WIND = 7
+    FIRE = auto()
+    ICE = auto()
+    IMAGINARY = auto()
+    LIGHTNING = auto()
+    PHYSICAL = auto()
+    QUANTUM = auto()
+    WIND = auto()
 
 
 class Path(Enum):
@@ -26,13 +26,13 @@ class Path(Enum):
     Extends:
         Enum
     """
-    ABUNDANCE = 1
-    DESTRUCTION = 2
-    ERUDITION = 3
-    HARMONY = 4
-    NIHILITY = 5
-    PRESERVATION = 6
-    THE_HUNT = 7
+    ABUNDANCE = auto()
+    DESTRUCTION = auto()
+    ERUDITION = auto()
+    HARMONY = auto()
+    NIHILITY = auto()
+    PRESERVATION = auto()
+    THE_HUNT = auto()
 
 
 class Rarity(Enum):
@@ -41,6 +41,6 @@ class Rarity(Enum):
     Extends:
         Enum
     """
-    THREE_STARS = 1
-    FOUR_STARS = 2
-    FIVE_STARS = 3
+    THREE_STARS = auto()
+    FOUR_STARS = auto()
+    FIVE_STARS = auto()

@@ -1,4 +1,4 @@
-"""Module that holds everything regarding HSR's Enemies associated with the
+"""Module that holds everything regarding HSR's enemies associated with the
 Xianzhou Luofu.
 """
 

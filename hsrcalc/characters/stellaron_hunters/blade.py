@@ -1,12 +1,15 @@
-"""This module holds the Character model for Blade.
+"""This module holds the character model for Blade.
 """
 
-from ..models import CharacterStats, Character
-from ...terminology import Element, Path, Rarity
+from ..models import CharacterStats, BaseCharacter
+from ... import terminology
 
 
-class BladeCharacter(Character):
-    """This class holds information regarding the Blade Character.
+class BladeCharacter(BaseCharacter):
+    """This class holds information regarding the Blade character.
+
+    Extends:
+        BaseCharacter
     """
 
     def __init__(self):
@@ -14,9 +17,9 @@ class BladeCharacter(Character):
         """
         super().__init__(
             name='Blade',
-            rarity=Rarity.FIVE_STARS,
-            path=Path.DESTRUCTION,
-            combat_type=Element.WIND,
+            rarity=terminology.Rarity.FIVE_STARS,
+            path=terminology.Path.DESTRUCTION,
+            combat_type=terminology.Element.WIND,
             hit_points=1358.0,
             attack=543.0,
             defense=485.0,

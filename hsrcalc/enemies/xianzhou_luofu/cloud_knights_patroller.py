@@ -2,13 +2,16 @@
 """
 
 from ..models import EnemyTier, EnemyDamageResistences, \
-    EnemyDebuffResistences, Enemy
-from ...terminology import Element
+    EnemyDebuffResistences, BaseEnemy
+from ... import terminology
 
 
-class CloudKnightsPatrollerEnemy(Enemy):
+class CloudKnightsPatrollerEnemy(BaseEnemy):
     """This class holds information regarding the Cloud Knights Patroller
     Enemy.
+
+    Extends:
+        BaseEnemy
     """
 
     def __init__(self):
@@ -17,8 +20,12 @@ class CloudKnightsPatrollerEnemy(Enemy):
         super().__init__(
             name='Cloud Knights Patroller',
             tier=EnemyTier.NORMAL,
-            damage_type=Element.WIND,
-            weaknesses=[Element.FIRE, Element.WIND, Element.IMAGINARY],
+            damage_type=terminology.Element.WIND,
+            weaknesses=[
+                terminology.Element.FIRE,
+                terminology.Element.WIND,
+                terminology.Element.IMAGINARY
+            ],
             toughness=60,
             hit_points=22024.0,
             attack=552.0,

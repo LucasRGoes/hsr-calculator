@@ -5,4 +5,6 @@ A damage calculator for the game Honkai Star Rail.
 
 ## Packages
 
-* [pandas](https://pypi.org/project/pandas/): _2.0.3_
+### Development Packages
+
+* [pylint](https://pypi.org/project/pylint/): _3.0.3_

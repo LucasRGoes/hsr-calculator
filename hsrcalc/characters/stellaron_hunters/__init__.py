@@ -1,4 +1,4 @@
-"""Module that holds everything regarding HSR's Characters associated with the
+"""Module that holds everything regarding HSR's characters associated with the
 Stellaron Hunters.
 """
 

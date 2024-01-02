@@ -1,0 +1,4 @@
+"""
+Honkai Star Rail Calculator
+===========================
+"""

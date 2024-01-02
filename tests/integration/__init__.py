@@ -1,2 +1,2 @@
-"""Integration testing for the application's combined modules.
+"""Integration testing for the application's modules.
 """
